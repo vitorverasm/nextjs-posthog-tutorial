@@ -8,11 +8,11 @@ export default async function Home() {
       <main className="flex flex-1 flex-col items-center justify-center p-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">
-            Advanced Experiments Next.js and Posthog
+            Advanced Experiments w/ Next.js + PostHog + Vercel
           </h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Explore how to implement and manage feature experiments using
-            Next.js and PostHog
+            Explore how to implement a bulletproof feature flagging system using
+            Next.js, PostHog, and Vercel.
           </p>
         </div>
 
