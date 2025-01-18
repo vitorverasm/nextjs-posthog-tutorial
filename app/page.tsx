@@ -1,11 +1,12 @@
 import { HomeCard } from "@/components/HomeCard";
 import { HomeCardServer } from "@/components/HomeCardServer";
-import { isTestExperimentEnabledFromPosthog } from "@/infra/posthog/flags";
+import { isTestExperimentEnabledWithVercelToolbarOverride } from "@/infra/posthog/flags";
 import { FlagValues } from "@vercel/flags/react";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const isTestExperimentEnabled = await isTestExperimentEnabledFromPosthog();
+  const isTestExperimentEnabled =
+    await isTestExperimentEnabledWithVercelToolbarOverride();
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center ">
