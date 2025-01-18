@@ -1,13 +1,8 @@
 import { HomeCard } from "@/components/HomeCard";
 import { HomeCardServer } from "@/components/HomeCardServer";
-import { isTestExperimentEnabledWithVercelToolbarOverride } from "@/infra/posthog/flags";
-import { FlagValues } from "@vercel/flags/react";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const isTestExperimentEnabled =
-    await isTestExperimentEnabledWithVercelToolbarOverride();
-
   return (
     <div className="flex min-h-screen w-full items-center justify-center ">
       <main className="flex flex-1 flex-col items-center justify-center p-4">
@@ -32,7 +27,6 @@ export default async function Home() {
           <HomeCardServer />
         </div>
       </main>
-      <FlagValues values={{ isTestExperimentEnabled }} />
     </div>
   );
 }
