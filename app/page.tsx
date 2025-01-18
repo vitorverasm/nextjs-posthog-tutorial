@@ -1,4 +1,5 @@
 import { HomeCard } from "@/components/HomeCard";
+import { HomeCardServer } from "@/components/HomeCardServer";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -15,10 +16,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-col gap-4">
+          <span className="text-lg font-bold">Client Side</span>
           <Suspense fallback={<div>Loading...</div>}>
             <HomeCard />
           </Suspense>
+        </div>
+        <div className="flex flex-col gap-4 mt-4">
+          <span className="text-lg font-bold">Server Side</span>
+          <HomeCardServer />
         </div>
       </main>
     </div>

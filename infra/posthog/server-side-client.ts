@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { PostHog } from "posthog-node"
 
 export function PostHogServerSideClient() {
@@ -8,3 +9,16 @@ export function PostHogServerSideClient() {
     })
     return posthogClient
 }
+
+export const getClientDistinctId = (): string => {
+    const phCookieKey = `ph_${process.env.NEXT_PUBLIC_POSTHOG_KEY}_posthog`;
+    const nextJsCookies = cookies();
+    const posthogCookie = nextJsCookies.get(phCookieKey);
+    let distinctId;
+    if (posthogCookie) {
+        distinctId = JSON.parse(posthogCookie.value).distinct_id;
+    } else {
+        distinctId = crypto.randomUUID();
+    }
+    return distinctId;
+};
