@@ -31,7 +31,7 @@ export default async function RootLayout({
   const isTestExperimentEnabled =
     await isTestExperimentEnabledWithVercelToolbarOverride();
 
-  const featureFlags: Record<string, "control" | "treatment"> = {
+  const featureFlags = {
     "test-experiment": isTestExperimentEnabled ? "treatment" : "control",
   };
 
@@ -43,8 +43,8 @@ export default async function RootLayout({
         <PostHogProvider distinctId={distinctId} featureFlags={featureFlags}>
           {children}
         </PostHogProvider>
+        <FlagValues values={{ isTestExperimentEnabled }} />
       </body>
-      <FlagValues values={{ isTestExperimentEnabled }} />
     </html>
   );
 }

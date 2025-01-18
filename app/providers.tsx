@@ -12,7 +12,7 @@ export default function PostHogProvider({
 }: {
   children: React.ReactNode;
   distinctId: string;
-  featureFlags: Record<string, "control" | "treatment">;
+  featureFlags: Record<string, string>;
 }) {
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_POSTHOG_KEY) {
@@ -24,6 +24,8 @@ export default function PostHogProvider({
           featureFlags,
         },
       });
+
+      posthog.featureFlags.override(featureFlags);
     }
   }, [distinctId, featureFlags]);
 
