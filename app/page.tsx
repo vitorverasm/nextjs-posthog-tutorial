@@ -1,26 +1,4 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-function BaseCard({ title, subtitle }: { title: string; subtitle: string }) {
-  return (
-    <Card className="w-[350px]">
-      <CardHeader className="flex flex-col gap-2">
-        <CardTitle>{title}</CardTitle>
-        <CardDescription className="w-max">{subtitle}</CardDescription>
-      </CardHeader>
-      <CardFooter className="flex justify-end gap-2">
-        <Button variant="outline">Cancel</Button>
-        <Button>Ok</Button>
-      </CardFooter>
-    </Card>
-  );
-}
+import BaseCard from "@/components/BaseCard";
 
 export default function Home() {
   return (
