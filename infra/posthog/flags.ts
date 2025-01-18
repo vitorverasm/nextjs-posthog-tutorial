@@ -32,10 +32,7 @@ export const isTestExperimentEnabledWithVercelToolbarOverride = flag({
         const overrides = cookies().get('vercel-flag-overrides')?.value;
         if (overrides) {
             const decryptedOverrides = await decrypt(overrides) as { [key: string]: string };
-            if (decryptedOverrides?.isTestExperimentEnabled === "treatment") {
-                return true;
-            }
-            return false;
+            return Boolean(decryptedOverrides?.isTestExperimentEnabled) === true
         }
 
         // If there is no override, return the value from PostHog
