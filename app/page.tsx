@@ -1,4 +1,5 @@
-import BaseCard from "@/components/BaseCard";
+import { HomeCard } from "@/components/HomeCard";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -15,14 +16,9 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row gap-4">
-          <BaseCard
-            title="CONTROL"
-            subtitle="This is the CONTROL variant of the experiment."
-          />
-          <BaseCard
-            title="TREATMENT"
-            subtitle="This is the TREATMENT variant of the experiment."
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <HomeCard />
+          </Suspense>
         </div>
       </main>
     </div>
