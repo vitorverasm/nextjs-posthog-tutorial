@@ -1,8 +1,12 @@
 import { HomeCard } from "@/components/HomeCard";
 import { HomeCardServer } from "@/components/HomeCardServer";
+import { isTestExperimentEnabledFromPosthog } from "@/infra/posthog/flags";
+import { FlagValues } from "@vercel/flags/react";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
+  const isTestExperimentEnabled = await isTestExperimentEnabledFromPosthog();
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center ">
       <main className="flex flex-1 flex-col items-center justify-center p-4">
@@ -27,6 +31,7 @@ export default function Home() {
           <HomeCardServer />
         </div>
       </main>
+      <FlagValues values={{ isTestExperimentEnabled }} />
     </div>
   );
 }
