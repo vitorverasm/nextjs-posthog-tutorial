@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { usePostHog } from "posthog-js/react";
+import { captureClientSideEvent } from "@/infra/posthog/utils";
 
 export default function BaseCard({
   title,
@@ -17,17 +17,15 @@ export default function BaseCard({
   title: string;
   subtitle: string;
 }) {
-  const posthog = usePostHog();
-
   const handleClickOk = () => {
-    posthog.capture("card_click_ok", {
+    captureClientSideEvent("card_click_ok", {
       title,
       subtitle,
     });
   };
 
   const handleClickCancel = () => {
-    posthog.capture("card_click_cancel", {
+    captureClientSideEvent("card_click_cancel", {
       title,
       subtitle,
     });
